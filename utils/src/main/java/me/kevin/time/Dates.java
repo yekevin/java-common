@@ -167,7 +167,7 @@ public class Dates {
      * @return 时间
      */
     public static Date addMinutes(Date date, int numOfMinutes) {
-        return new DateTime(date).plusMillis(numOfMinutes).toDate();
+        return new DateTime(date).plusMinutes(numOfMinutes).toDate();
     }
 
     /**
@@ -263,7 +263,7 @@ public class Dates {
      * @param date 日期a
      * @return 小于返回true，反之false
      */
-    public static Boolean isBefore(Date date) {
+    public static Boolean isBeforeNow(Date date) {
         return new DateTime(date).isBeforeNow();
     }
 

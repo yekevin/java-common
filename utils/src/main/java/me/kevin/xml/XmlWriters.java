@@ -10,7 +10,7 @@ import java.util.List;
  * @date 2017/1/19
  */
 public class XmlWriters {
-    List<E> es = new ArrayList<>();
+    private List<E> es = new ArrayList<>();
 
     private XmlWriters() {
     }
@@ -80,30 +80,7 @@ public class XmlWriters {
         return this;
     }
 
-    /**
-     * 构建包含多个子元素的元素
-     *
-     * @param parentName 父元素标签名
-     * @param childPairs childName1, childValue1, childName2, childValu2, ...，长度必读为2的倍数
-     * @return an element
-     */
-    public E newElement(String parentName, Object... childPairs) {
-        E parent = new TextE(parentName, null);
-        List<E> children = new ArrayList<>();
-        E child;
-        for (int i = 0; i < childPairs.length; i = i + 2) {
-            if (childPairs[i + 1] instanceof Number) {
-                child = new NumberE((String) childPairs[i], (Number) childPairs[i + 1]);
-            } else {
-                child = new TextE((String) childPairs[i], (String) childPairs[i + 1]);
-            }
-            children.add(child);
-        }
-        parent.children = children;
-        return parent;
-    }
-
-    public String build(){
+    public String build() {
         return buildElements();
     }
 
@@ -113,8 +90,8 @@ public class XmlWriters {
 
         xml.append("<xml>");
 
-        if (es != null && es.size() > 0){
-            for (E e : es){
+        if (es != null && es.size() > 0) {
+            for (E e : es) {
                 xml.append(e.render());
             }
         }
